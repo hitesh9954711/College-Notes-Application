@@ -1,0 +1,22 @@
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="progress"></mat-progress-bar>
+<div class="alert {{class}}" *ngIf="class" role="alert">
+  {{message}}
+</div> 
+<div class="container ">
+  <div class="row">
+    <div *ngFor="let items of courses" class="col-md-6">
+        <div class="card" style=" margin-top: 15px;">
+            <div class="card-body">
+              <h5 class="card-title">Courses</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{items.course}}</h6>
+              <span class="card-text" *ngFor="let item of items.semesters" >{{item}} </span>
+              <br>
+              <a [routerLink]="['/teacher/addNotes',items.course]"  class="card-link">Add Notes </a>
+              <a [routerLink]="['/teacher/dailyNotes',items.course]"  class="card-link">Daily Notes </a>
+              <a [routerLink]="['/teacher/semesterNotes',items.course]"  class="card-link">Semester Notes </a>
+            </div>
+          </div>
+    </div>
+</div>
+</div>
+  

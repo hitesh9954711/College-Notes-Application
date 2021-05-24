@@ -1,0 +1,38 @@
+<div class="container c1">
+  <div class="card">
+    <div class="card-header bg-dark text-center">
+      <img src="/assets/books.png" class="card-img-top mx-auto" style="height: 80px; width: 80px;" alt="...">
+      <h3 class="heading">Add courses</h3>
+    </div>
+    <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+    <div class="alert {{class}}" *ngIf="class" role="alert">
+      {{message}}
+    </div> 
+    <div class="card-body">
+      <form [formGroup]="addCourse" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+           <label>Enter course:</label>
+            <input class="form-control" required="" type="text" formControlName="course">
+        </div>
+        <div class="form-group">
+            <label>Select Semesters</label>
+            <select name="semesters" multiple="" formControlName="semesters" class="form-control">
+                <option value="Semester 1">Semester 1</option>
+                <option value="Semester 2">Semester 2</option>
+                <option value="Semester 3">Semester 3</option>
+                <option value="Semester 4">Semester 4</option>
+                <option value="Semester 5">Semester 5</option>
+                <option value="Semester 6">Semester 6</option>
+                <option value="Semester 7">Semester 7</option>
+                <option value="Semester 8">Semester 8</option>
+                <option value="Semester 9">Semester 9</option>
+                <option value="Semester 10">Semester 10</option>
+            </select>
+        </div>
+        <div class="container text-center">
+          <button mat-raised-button color="primary">Add Courses</button>
+         </div>
+    </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,162 @@
+<div *ngIf="data.name=='deleteSubject'">
+  <h1 mat-dialog-title>Do You Want To Delete The Subject</h1>
+  <div mat-dialog-content>Delete The Subject</div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" mat-dialog-close mat-dialog-close="false">Close</button>
+    <button mat-raised-button color="warn" mat-dialog-close mat-dialog-close="true">Delete</button>
+  </div>
+</div>
+
+<div *ngIf="data.name=='deleteSemester'">
+  <h1 mat-dialog-title>Do You Want To Delete The Semester</h1>
+  <div mat-dialog-content>Delete The Semester</div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" mat-dialog-close mat-dialog-close="false">Close</button>
+    <button mat-raised-button color="warn" mat-dialog-close mat-dialog-close="true">Delete</button>
+  </div>
+</div>
+
+<div *ngIf="data.name=='updateSemester'">
+  <h1 mat-dialog-title>Update Semester</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter New Subject</mat-label>
+      <input matInput [(ngModel)]="subject">
+    </mat-form-field>
+  </div>
+  <mat-dialog-actions align="left">
+    <button mat-raised-button color="primary" mat-dialog-close mat-dialog-close="{{subject}}">Update Semester</button>
+    <button mat-raised-button color="accent" mat-dialog-close mat-dialog-close="false">Close</button>
+  </mat-dialog-actions>
+</div>
+
+<div *ngIf="data.name=='action'">
+  <h1 mat-dialog-title>Teacher Request</h1>
+  <div mat-dialog-actions>
+    <button style="margin-top: 4px;" mat-raised-button color="warn" mat-dialog-close="false">Delete Request</button>
+    <button style="margin-top: 4px;" mat-raised-button color="accent" mat-dialog-close="true" cdkFocusInitial>Accept
+      Request</button>
+  </div>
+</div>
+<div *ngIf="data.name=='deleteCourse'">
+  <h1 mat-dialog-title>Do You Want To Delete The Course</h1>
+  <div mat-dialog-content>Delete The Course</div>
+  <div mat-dialog-actions>
+    <button style="margin-top: 4px;" mat-raised-button color="accent" mat-dialog-close="false"
+      cdkFocusInitial>Cancel</button>
+    <button style="margin-top: 4px;" mat-raised-button color="warn" mat-dialog-close="true">Delete Course</button>
+  </div>
+</div>
+
+<div *ngIf="data.name=='profile'">
+  <mat-progress-bar mode="indeterminate" color="primary" *ngIf="progress"></mat-progress-bar>
+  <h5 mat-dialog-title>
+    <div class="alert {{class}} alert-dismissible fade show" *ngIf="class" role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </h5>
+  <h1 mat-dialog-title>Admin profile</h1>
+  <div mat-dialog-content>Update Profile</div>
+  <div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Update Name</mat-label>
+        <input formControlName="name" matInput >
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput  >
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Update password</mat-label>
+        <input formControlName="password" matInput >
+      </mat-form-field>
+      <mat-dialog-actions>
+        <button style="margin-top: 4px;" mat-raised-button color="accent" mat-dialog-close="{{check}}"
+      cdkFocusInitial>Cancel</button>
+    <button type="submit" style="margin-top: 4px;" mat-raised-button color="primary">Update Profile</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+</div>
+
+
+<div *ngIf="data.name=='teacherProfile'">
+  <mat-progress-bar mode="indeterminate" color="primary" *ngIf="progress"></mat-progress-bar>
+  <h5 mat-dialog-title>
+    <div class="alert {{class}} alert-dismissible fade show" *ngIf="class" role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </h5>
+  <h1 mat-dialog-title>Teacher profile</h1>
+  <div mat-dialog-content>Update Profile</div>
+  <div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit1()">
+      <mat-form-field appearance="fill">
+        <mat-label>Update Name</mat-label>
+        <input formControlName="name" matInput >
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput  >
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Update password</mat-label>
+        <input formControlName="password" matInput >
+      </mat-form-field>
+      <mat-dialog-actions>
+        <button style="margin-top: 4px;" mat-raised-button color="accent" mat-dialog-close="{{check}}"
+      cdkFocusInitial>Cancel</button>
+    <button type="submit" style="margin-top: 4px;" mat-raised-button color="primary">Update Profile</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+</div>
+
+
+<div *ngIf="data.name=='studentProfile'">
+  <mat-progress-bar mode="indeterminate" color="primary" *ngIf="progress"></mat-progress-bar>
+  <h5 mat-dialog-title>
+    <div class="alert {{class}} alert-dismissible fade show" *ngIf="class" role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </h5>
+  <h1 mat-dialog-title>Teacher profile</h1>
+  <div mat-dialog-content>Update Profile</div>
+  <div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit2()">
+      <mat-form-field appearance="fill">
+        <mat-label>Update Name</mat-label>
+        <input formControlName="name" matInput >
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput  >
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Update password</mat-label>
+        <input formControlName="password" matInput >
+      </mat-form-field>
+      <mat-dialog-actions>
+        <button style="margin-top: 4px;" mat-raised-button color="accent" mat-dialog-close="{{check}}"
+      cdkFocusInitial>Cancel</button>
+    <button type="submit" style="margin-top: 4px;" mat-raised-button color="primary">Update Profile</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+</div>

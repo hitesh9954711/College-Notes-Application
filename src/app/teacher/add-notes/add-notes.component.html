@@ -1,0 +1,29 @@
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="progress"></mat-progress-bar>
+<div class="alert {{class}}" *ngIf="class" role="alert">
+  {{message}}
+</div>
+<div class="container mt-3">
+  <div class="card" *ngFor="let elements of courseList">
+    <div class="card-header text-center bg-dark">
+      <img class="card-img-top mx-auto" src="/assets/notes.png" style="height: 100px; width: 100px;"
+        alt="Card image cap">
+      <p class="heading">{{elements.course}}</p>
+    </div>
+
+    <div class="card-body container text-center">
+      <div class="row ">
+        <div class="col-md-4 mt-3 " *ngFor="let element of elements.semesters">
+          <button mat-raised-button color="primary" (click)="showSubjects(element,elements.course)">{{element}}</button>
+        </div>
+      </div>
+      <div class="alert alert-success mt-4 "*ngIf="check" role="alert">
+        No Subjects Found
+      </div>
+      <div class="row" *ngFor="let objects of anotherSubjectsList">
+        <div class="col-md-4 mt-4" *ngFor="let obj of objects.subjects;let i=index">
+          <button mat-raised-button (click)="openDialogForUpdate(objects,i,elements.course)">{{obj}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

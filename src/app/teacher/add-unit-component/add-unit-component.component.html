@@ -1,0 +1,13 @@
+<div>
+    <h1 mat-dialog-title>Add Unit</h1>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill">
+            <mat-label>Input</mat-label>
+            <input matInput [(ngModel)]="formValue">
+          </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" mat-dialog-close mat-dialog-close="false">Close</button>
+      <button mat-raised-button color="accent" mat-dialog-close mat-dialog-close="{{formValue}}">Add Unit</button>
+    </div>
+</div>

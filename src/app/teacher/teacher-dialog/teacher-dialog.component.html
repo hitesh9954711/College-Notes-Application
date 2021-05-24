@@ -1,0 +1,112 @@
+<div *ngIf="data.name=='addNotes'">
+  <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+      <div class="alert {{class}} alert-dismissible fade show" *ngIf="class" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div *ngIf="fileStatus.status==='progress'">
+        <div class="progress">
+          <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+              {{ fileStatus.requestType }} {{ fileStatus.percent }} 
+            </div>
+        </div>
+      </div>
+  <p style="color: red;">All Fields are necessary to fill</p>
+  <h1 mat-dialog-title>Add Notes</h1>
+  <div mat-dialog-content>{{subject}}</div>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div mat-dialog-content class="mt-2">
+      <mat-form-field appearance="fill" style="width: 15rem;">
+        <mat-label >Select Unit</mat-label>
+        <mat-select required ngModel name="unit">
+          <mat-option *ngFor="let unit of units" value="{{unit}}">{{unit}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-stroked-button (click)="openDialog()">Add Unit</button>
+    </div>
+    <br>
+    <mat-form-field appearance="fill" style="width: 15rem;">
+      <mat-label>Enter the Topic Name</mat-label>
+      <input required matInput ngModel name="topicName">
+    </mat-form-field>
+    <br>
+    <div class="form-group" style="width: 15rem;">
+      <label>Add Files</label>
+      <input  type="file" multiple (change)="onFileSelected($event)" class="form-control">
+    </div>
+    <div class="form-group" style="width: 15rem;">
+      <label>Add Video</label>
+      <input  type="file" multiple (change)="onVideoSelected($event)"   class="form-control">
+    </div>
+    <mat-slide-toggle ngModel name="check">Add Notes to daily notes</mat-slide-toggle>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="warn" mat-dialog-close mat-dialog-close="false">Close</button>
+      <button type="submit" mat-raised-button color="primary">Upload
+        Notes</button>
+    </div>
+  </form>
+</div>
+<div *ngIf="data.name=='updateNotes'">
+  <div *ngIf="fileStatus.status==='progress'">
+    <div class="progress">
+      <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          {{ fileStatus.requestType }} {{ fileStatus.percent }} 
+        </div>
+    </div>
+  </div>
+  <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+      <div class="alert {{class}} alert-dismissible fade show" *ngIf="class" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <h1 mat-dialog-title>Update Notes</h1>
+    <div class="form-group" style="width: 15rem;">
+      <label>Add Files</label>
+      <input  type="file" multiple (change)="onFileSelected($event)" class="form-control">
+    </div>
+    <div class="form-group" style="width: 15rem;">
+      <label>Add Video</label>
+      <input  type="file" multiple (change)="onVideoSelected($event)"   class="form-control">
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="warn" mat-dialog-close mat-dialog-close="false">Close</button>
+      <button type="button" (click)="updateNote()" mat-raised-button color="primary">Upload
+        Notes</button>
+    </div>
+</div>
+<div *ngIf="data.name=='updateSemesterNotes'">
+  <div *ngIf="fileStatus.status==='progress'">
+    <div class="progress">
+      <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          {{ fileStatus.requestType }} {{ fileStatus.percent }} 
+        </div>
+    </div>
+  </div>
+  <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+      <div class="alert {{class}} alert-dismissible fade show" *ngIf="class" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <h1 mat-dialog-title>Update Notes</h1>
+    <div class="form-group" style="width: 15rem;">
+      <label>Add Files</label>
+      <input  type="file" multiple (change)="onFileSelected($event)" class="form-control">
+    </div>
+    <div class="form-group" style="width: 15rem;">
+      <label>Add Video</label>
+      <input  type="file" multiple (change)="onVideoSelected($event)"   class="form-control">
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="warn" mat-dialog-close mat-dialog-close="false">Close</button>
+      <button type="button" (click)="updateSemesterNote()" mat-raised-button color="primary">Upload
+        Notes</button>
+    </div>
+</div>
+

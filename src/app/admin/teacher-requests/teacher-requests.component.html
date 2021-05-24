@@ -1,0 +1,45 @@
+<mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+<div class="alert {{class}} alert-dismissible fade show" *ngIf="class" role="alert">
+  <strong>{{message}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header text-center">
+      <img class="card-img-top mx-auto" src="/assets/teacher.png" style="height: 100px; width: 100px;"
+        alt="Card image cap">
+      <p>Teachers Requests</p>
+    </div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Teacher Name</th>
+              <th scope="col">Teacher Email</th>
+              <th scope="col">Teacher Courses</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let elements of teacherRequestList;let i=index">
+              <th scope="row">{{i}}</th>
+              <td>{{elements.name}}</td>
+              <td>{{elements.email}}</td>
+              <td>
+                <span *ngFor="let element of elements.courses">{{element}},</span>
+              </td>
+              <td>
+                <button mat-raised-button (click)="openDialog(elements.email)" color="primary">Action</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

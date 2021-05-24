@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+  <a class="navbar-brand" routerLink="">Student Notes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/register/studentRegistration"> Register Here</a>
+      </li>
+  </ul>
+  </div>
+</nav>
+<div class="jumbotron">
+  <div class="container c">
+    <div class="card" >
+        <div class="card-header text-center" >
+          <img src="assets/user (1).png"  style="height: 80px; width: 80px;" class="card-img-top mx-auto" alt="...">
+          <h2>Register Here!</h2>
+        </div>
+        <div class="card-body">
+            <div class="container text-center">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-sm btn-success btn-secondary active">
+                      <input type="radio" name="options" routerLink="studentRegistration" id="option1" checked>Click For Student Registration
+                    </label>
+                    <label class="btn btn-sm btn-info btn-secondary">
+                      <input type="radio" name="options " routerLink="teacherRegistration" id="option2">Click For Teacher Registration
+                    </label>
+                </div>
+            </div>
+            <div class="container mt-4">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+      </div>
+    
+</div>
+
+</div>
+ 

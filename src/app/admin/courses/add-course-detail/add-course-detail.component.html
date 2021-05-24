@@ -1,0 +1,46 @@
+<div class="container ">
+  <div class="card">
+    <div class="card-header bg-dark text-center">
+      <img src="/assets/books.png" class="card-img-top mx-auto" style="height: 80px; width: 80px;" alt="...">
+      <h3 class="heading">Add courses Details</h3>
+    </div>
+    <mat-progress-bar mode="indeterminate" color="primary" *ngIf="progress"></mat-progress-bar>
+    <div class="alert {{class}}" *ngIf="class" role="alert">
+      {{message}}
+    </div>
+    <div class="card-body">
+      <form *ngIf="formCheck" #formDetails="ngForm" (ngSubmit)="onSubmit(formDetails)">
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Select Course</label>
+          <select required ngModel name="course" #mySelect (change)="onOptionsSelected(mySelect.value)" class="form-control">
+            <option disabled selected>Select the course</option>
+            <option *ngFor="let items of courseList">{{items.course}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Select Semester</label>
+          <select required ngModel name="semester" *ngFor="let items of listOfSemester" class="form-control">
+            <option disabled selected>Select the semester</option>
+            <option *ngFor="let course of items.semesters">{{course}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label style="color: blue;" for="exampleFormControlFile1">Minimum 3 Subject is required to submit the form</label>
+        </div>
+        <div class="row">
+          <div *ngFor="let items of subject;let i=index" class="col-md-6">
+            <div  *ngIf="i<3" class="form-group">
+              <input ngModel name="{{items}}" required type="text" placeholder="{{items}}" class="form-control" placeholder="name@example.com">
+            </div>
+            <div *ngIf="i>=3" class="form-group">
+              <input ngModel name="{{items}}"  type="text" placeholder="{{items}}" class="form-control" placeholder="name@example.com">
+            </div>
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" mat-raised-button color="primary">Add Details</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container c1">
+    <div class="card">
+      <div class="card-header bg-dark text-center">
+        <img src="/assets/teacher.png" class="card-img-top mx-auto" style="height: 80px; width: 80px;" alt="...">
+        <h3 class="heading">Delete Teacher</h3>
+      </div>
+      <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+      <div class="alert {{class}} alert-dismissible fade show" *ngIf="class" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card-body">
+          <form [formGroup]="deleteTeacherForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Teacher Email</label>
+                  <input formControlName="email" type="email" class="form-control" placeholder="Enter Teacher's Email">
+                </div>
+                <div class="text-center">
+                  <button type="submit" mat-raised-button color="primary">Delete Teacher</button>
+                </div>
+          </form>
+      </div>
+    </div>
+  </div>
+  

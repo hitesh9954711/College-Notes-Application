@@ -1,0 +1,46 @@
+<mat-progress-bar *ngIf="progress" mode="indeterminate"></mat-progress-bar>
+<div style="margin-bottom:0px;" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{parmQuery}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="alert {{class}}  alert-dismissible fade show" *ngIf="class" role="alert">
+  <strong>{{message}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="container" *ngIf="check">
+  <div class="row">
+    <div class="col-md-6" style="margin-top: 20px;" *ngFor="let items of subjectDetailList">
+        <div class="card">
+          <img src="/assets/graduation.png" class="card-img-top mx-auto" style="height: 80px; width: 80px;" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{items.course}}</h5>
+            <p class="card-text" style="font-weight: bold;">{{items.semester}}</p>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col-4">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let subject of items.subjects;let i=index">
+                  <th scope="row">{{i}}</th>
+                  <td>{{subject}}</td>
+                  <td><button  (click)="openDialog(items.id,i)" class="btn btn-sm btn-danger">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-center">
+                <button  class="btn btn-sm btn-warning" (click)="openDialogForUpdate(items.id)">Update</button>
+                <button style="margin-left: 5px;" (click)="openDialogForSemester(items.id)"  class="btn btn-sm btn-danger">Delete semester</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

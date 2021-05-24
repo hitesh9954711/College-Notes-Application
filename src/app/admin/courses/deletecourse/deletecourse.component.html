@@ -1,0 +1,30 @@
+<div class="container c1">
+    <div class="card">
+      <div class="card-header bg-dark text-center">
+        <img src="/assets/books.png" class="card-img-top mx-auto" style="height: 80px; width: 80px;" alt="...">
+        <h3 class="heading">Delete Course</h3>
+      </div>
+      <mat-progress-bar mode="indeterminate" *ngIf="progress"></mat-progress-bar>
+      <div class="alert {{class}} alert-dismissible fade show" *ngIf="class" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card-body">
+          <form [formGroup]="deleteCourse" (ngSubmit)="onSubmit()">
+            <div   class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select  formControlName="course" class="form-control" id="exampleFormControlSelect1">
+                    <option selected >Select the course</option>
+                  <option *ngFor="let items of courseList">{{items.course}}</option>
+                </select>
+              </div>
+                <div class="text-center">
+                  <button type="submit" mat-raised-button color="primary">Delete Course</button>
+                </div>
+          </form>
+      </div>
+    </div>
+  </div>
+  

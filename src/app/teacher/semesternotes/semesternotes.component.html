@@ -1,0 +1,108 @@
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="progress"></mat-progress-bar>
+<div class="alert {{class}}" *ngIf="class" role="alert">
+  {{message}}
+</div>
+<div *ngIf="fileStatus.status==='progress'">
+  <div class="progress">
+    <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+        {{ fileStatus.requestType }} {{ fileStatus.percent }} 
+      </div>
+  </div>
+</div> 
+<div class="container c1 text-center mt-2">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"  *ngFor="let element of courseList" >
+                    <select ngModel name="semester" #id (change)="showSubjects(id.value)" class="form-control" id="exampleFormControlSelect1">
+                      <option>select semester</option>
+                      <option *ngFor="let sem of element.semesters">{{sem}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group" *ngFor="let element of anotherSubjectsList">
+                    <select ngModel name="subject" class="form-control" id="exampleFormControlSelect1">
+                      <option>select course</option>
+                      <option *ngFor="let subject of element.subjects" value="{{subject}}">{{subject}}</option>
+                    </select>
+                  </div>
+            </div>
+        </div>
+        <button type="submit" mat-raised-button color="primary">Search</button>
+    </form>
+    <mat-form-field style="margin-top: 5px;" appearance="fill">
+        <mat-label>Search Topic</mat-label>
+        <input matInput #iddd>
+      </mat-form-field>
+      <button class="ml-1" (click)="searchTopic(iddd.value)" mat-raised-button>Search Topic</button>
+      <br>
+      <button mat-raised-button (click)="allNotes()">All Notes</button>
+</div>
+<div class="mt-4 container" *ngFor="let note of  searchNotes">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{note.course}}
+          </mat-panel-title>
+          <mat-panel-description>
+            <h3 style="font-weight: bold;">{{note.semester}}-{{note.subject}}--{{note.unit}}---{{note.topic}}</h3>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row text-center mt-2">
+          <div class=" col-md-4 mt-2" *ngFor="let files of note.files;let i=index">
+            <span>{{files | slice:files.length/2:files.length  }}</span>
+            <button (click)="download(files,true)" color="primary" class="ml-2" mat-mini-fab
+            aria-label="Example icon button with a home icon">
+            <mat-icon>
+              <span class="material-icons-two-tone">
+                download
+              </span>
+            </mat-icon>
+          </button>
+          <button (click)="openDialogForDeleteOneNote(note.id,i,true)" class="ml-2" color="warn" mat-mini-fab aria-label="Example icon button with a home icon">
+            <mat-icon><span class="material-icons-two-tone">
+                delete
+              </span></mat-icon>
+          </button>
+          </div>
+        </div>
+        <div class="row text-center mt-2">
+          <div class=" col-md-4 mt-2" *ngFor="let videos of note.videos; let i=index">
+            <span>{{videos}}</span>
+            <button (click)="download(videos,false)" color="primary" class="ml-2" mat-mini-fab
+            aria-label="Example icon button with a home icon">
+            <mat-icon>
+              <span class="material-icons-two-tone">
+                download
+              </span>
+            </mat-icon>
+          </button>
+            <button (click)="openDialogForDeleteOneNote(note.id,i,false)"  class="ml-2" color="warn" mat-mini-fab aria-label="Example icon button with a home icon">
+              <mat-icon><span class="material-icons-two-tone">
+                  delete
+                </span></mat-icon>
+            </button>
+            <button (click)="openDialogForVideo(videos,false)"   class="ml-2" mat-mini-fab aria-label="Example icon button with a home icon">
+              <mat-icon><span class="material-icons-outlined">
+                  play_arrow
+                </span></mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="text-center mt-2">
+          <button mat-raised-button (click)="openDialogToDeleteCompleteNote(note.id)" color="warn">Delete</button>
+          <button mat-raised-button  (click)="openDialogToUpdate(note.id)" color="accent" class="ml-2">Update</button>
+          <button mat-raised-button (click)="AddToDailyNotes(note.id)" color="primary" class="ml-2">Add To Daily Notes</button>
+          <p style="text-align:left;">
+            By Lect.{{note.teacher.name}}
+            <span style="float:right;">
+            {{note.date}}
+            </span>
+       </p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  
